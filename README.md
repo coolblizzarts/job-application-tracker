@@ -17,7 +17,7 @@ A full‑stack, containerized web app to track job applications with **JWT auth*
 - **Dockerized**: `docker compose up --build` to run everything.
 - **Clean structure & comments**: Easy to add more endpoints/pages later.
 
-> ⚠️ The Resume Match feature is intentionally simple and free‑tier friendly. See **Future Scope** for ideas to improve it.
+> ⚠️ The Resume Match feature is intentionally simple and free‑tier friendly. **Future Scope** has ideas to improve it.
 
 ---
 
