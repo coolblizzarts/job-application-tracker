@@ -60,24 +60,24 @@ job-application-tracker/
 │        ├─ stats.js
 │        ├─ enrich.js
 │        └─ ai.js
-├─ frontend/
-│  ├─ .env            # NOT committed (use .env.example)
-│  ├─ .env.example
-│  └─ src/
-│     ├─ main.jsx
-│     ├─ App.jsx
-│     ├─ index.css
-│     ├─ components/
-│     │  └─ Navbar.jsx
-│     ├─ pages/
-│     │  ├─ Login.jsx
-│     │  ├─ Dashboard.jsx
-│     │  ├─ Analytics.jsx
-│     │  └─ ResumeMatch.jsx
-│     └─ services/
-│        ├─ api.js
-│        └─ auth.js
-└─ docs/ (optional)
+└─ frontend/
+   ├─ .env            # NOT committed (use .env.example)
+   ├─ .env.example
+   └─ src/
+      ├─ main.jsx
+      ├─ App.jsx
+      ├─ index.css
+      ├─ components/
+      │  └─ Navbar.jsx
+      ├─ pages/
+      │  ├─ Login.jsx
+      │  ├─ Dashboard.jsx
+      │  ├─ Analytics.jsx
+      │  └─ ResumeMatch.jsx
+      └─ services/
+         ├─ api.js
+         └─ auth.js
+
 
 ````
 
