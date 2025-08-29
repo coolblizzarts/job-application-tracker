@@ -307,37 +307,6 @@ docker compose exec db psql -U postgres -d jobs   # psql shell
 
 ---
 
-## 🧭 Deployment (AWS Free Tier – simple path)
-
-**Goal**: One small EC2 instance (e.g., t2.micro) running Docker Compose.
-
-1. **Provision EC2** (Amazon Linux 2/Ubuntu), allow inbound 80/443 (HTTP/HTTPS) and needed dev ports (optional) in security group.
-2. **Install Docker & Compose** on the instance.
-3. **Clone your repo** onto the instance.
-4. **Create env files** (`backend/.env`, `frontend/.env`) on the instance with production values (new `JWT_SECRET`).
-5. **Run** `docker compose up -d --build`.
-6. **Reverse proxy (optional)**: put Nginx/ALB in front to serve frontend on 80/443 and proxy to API. Or host the frontend statically (S3+CloudFront) and keep API on EC2.
-
-> For a quick demo, open EC2 public IP:
->
-> * Frontend: `http://<EC2_IP>:5173`
-> * API: `http://<EC2_IP>:8080`
-> * Adminer: `http://<EC2_IP>:8081`
->
-> For production, prefer a domain + HTTPS and hide Adminer.
-
----
-
-## 🧩 Troubleshooting
-
-* **API won’t start**: run `docker compose logs api`. If `pdf-parse` import error, ensure the lazy import path matches: `pdf-parse/lib/pdf-parse.js`.
-* **DB connection refused**: ensure `PGHOST=db` and compose service is named `db`. Recreate containers.
-* **CORS errors**: set `FRONTEND_ORIGIN` in `backend/.env` to your actual frontend origin.
-* **Navbar shows Logout when logged out**: clear stale `localStorage.token`; frontend uses strict token checks in `services/auth.js`.
-* **.env leaked**: make sure `.gitignore` includes `*.env` and remove any cached files: `git rm --cached backend/.env frontend/.env`.
-
----
-
 ## 🔭 Future Scope
 
 * **Resume Match**
@@ -356,12 +325,6 @@ docker compose exec db psql -U postgres -d jobs   # psql shell
 
 ---
 
-## 📜 License
-
-MIT (add a `LICENSE` file if desired).
-
----
-
 ## 🙌 Acknowledgements
 
 * Hugging Face Inference API, MiniLM models
@@ -369,31 +332,6 @@ MIT (add a `LICENSE` file if desired).
 * React + Vite
 
 ---
-
-## 🧪 Quick cURL Examples
-
-```bash
-# Health
-curl http://localhost:8080/health
-
-# Register
-curl -X POST http://localhost:8080/api/auth/register \
-  -H 'Content-Type: application/json' \
-  -d '{"email":"me@example.com","password":"secret123"}'
-
-# Login (save token)
-TOKEN=$(curl -s -X POST http://localhost:8080/api/auth/login \
-  -H 'Content-Type: application/json' \
-  -d '{"email":"me@example.com","password":"secret123"}' | jq -r .token)
-
-# List apps
-curl -H "Authorization: Bearer $TOKEN" http://localhost:8080/api/apps
-
-# Create app
-curl -X POST http://localhost:8080/api/apps \
-  -H "Authorization: Bearer $TOKEN" -H 'Content-Type: application/json' \
-  -d '{"company":"Acme","role":"SDE","status":"Applied","applied_on":"2025-08-28"}'
-```
 
 
 
