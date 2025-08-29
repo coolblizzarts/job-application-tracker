@@ -1,0 +1,32 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: jobs
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+
+  api:
+    build: ./backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    command: ["node", "src/server.js"]
+
+volumes:
+  db_data:

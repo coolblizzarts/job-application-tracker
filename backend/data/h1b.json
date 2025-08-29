@@ -1,0 +1,5 @@
+{
+  "Google": { "sponsorRate": 0.90, "note": "Sample static data" },
+  "Amazon": { "sponsorRate": 0.85 },
+  "NXP": { "sponsorRate": 0.70 }
+}
