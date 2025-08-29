@@ -1,4 +1,3 @@
-```markdown
 # Job Application Tracker
 
 A full‑stack, containerized web app to track job applications with **JWT auth**, **PostgreSQL** persistence, lightweight **analytics**, and an **AI Resume ↔ JD Match** feature powered by transformer embeddings. Built to be **beginner‑friendly**, deployable on the **AWS free tier**, and easy to extend.
@@ -396,5 +395,5 @@ curl -X POST http://localhost:8080/api/apps \
   -d '{"company":"Acme","role":"SDE","status":"Applied","applied_on":"2025-08-28"}'
 ```
 
-```
-```
+
+
